@@ -1,3 +1,4 @@
+@Library('shared-library') _
 pipeline {
     agent {
         docker {
@@ -6,6 +7,11 @@ pipeline {
     }
 
     stages {
+        stage('Hello world') {
+            steps {
+                helloWorld()
+            }
+        }
         stage ('Testing') {
             steps {
                 echo "Testing the application"

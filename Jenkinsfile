@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Hello world') {
             steps {
-                helloWorld()
+                helloWorld(name: "Hanjaya", day: "Friday")
             }
         }
         stage ('Testing') {

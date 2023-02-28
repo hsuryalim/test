@@ -1,16 +1,13 @@
 pipeline {
-	agent none
+	agent any
 
 	options {
 		timestamps()
+		skipDefaultCheckout()
 	}
 
 	stages {
 		stage('Hello World') {
-			agent any
-			//options {
-			//	skipDefaultCheckout()
-			//}
 			steps {
 				echo "Before error"
 				sleep 2

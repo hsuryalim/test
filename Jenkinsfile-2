@@ -1,9 +1,9 @@
 pipeline {
-	agent none
+	agent any
 
 	options {
 		timestamps()
-	//	skipDefaultCheckout()
+		skipDefaultCheckout()
 	}
 
 	stages {

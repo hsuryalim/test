@@ -9,11 +9,13 @@ pipeline {
 			options {
 				retry(3)
 			}
-			echo "Before error"
-			script {
-				currentBuild.status = "FAILURE"
+			steps {
+				echo "Before error"
+				script {
+					currentBuild.status = "FAILURE"
+				}
+				echo "After error"
 			}
-			echo "After error"
 		}
 	}
 }

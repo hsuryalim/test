@@ -7,14 +7,11 @@ pipeline {
 	stages {
 		stage('Hello World') {
 			options {
-				retry(3)
+				timeout(time:1, unit: 'SECONDS')
 			}
 			steps {
 				echo "Before error"
-				script {
-					currentBuild.status = "FAILURE"
-				}
-				echo "After error"
+				sleep 2
 			}
 		}
 	}

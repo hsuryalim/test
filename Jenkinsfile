@@ -10,11 +10,10 @@ pipeline {
         stage('Hello world') {
             steps {
                 helloWorld(name: "Hanjaya", day: "Friday")
-            	retry(3){
-			echo "Before error"
-			error "error in retry"
+	    	timeout(time: 1, unit: 'SECONDS') {
+			echo "sleeping in timeout"
+			sleep 2
 		}
-		echo "never come out"
 	    }
         }
         stage ('Testing') {

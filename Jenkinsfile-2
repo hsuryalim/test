@@ -4,14 +4,21 @@ pipeline {
 			image 'golang'
 		}
 	}
+
+	options {
+		timestamp()
+	}
+
 	stages {
 		stage('Hello World') {
-			options {
-				timeout(time:1, unit: 'SECONDS')
-			}
 			steps {
 				echo "Before error"
 				sleep 2
+			}
+		}
+		stage('Test') {
+			steps {
+				echo "test"
 			}
 		}
 	}

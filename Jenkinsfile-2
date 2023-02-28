@@ -8,9 +8,9 @@ pipeline {
 	stages {
 		stage('Hello World') {
 			agent any
-			//options {
-			//	skipDefaultCheckout()
-			//}
+			options {
+				skipDefaultCheckout()
+			}
 			steps {
 				echo "Before error"
 				sleep 2

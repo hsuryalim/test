@@ -4,10 +4,10 @@ pipeline {
     stages {
 	stage('Hello world') {
 		tools {
-			maven 'maven_3_6_3'
+			maven 'maven 3.6.3'
 		}
 		steps {
-			sh 'mvn -version'
+			sh 'mvn --version'
 		}
 	}
     }

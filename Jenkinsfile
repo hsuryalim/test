@@ -10,7 +10,18 @@ pipeline {
         stage('Hello world') {
             steps {
                 helloWorld(name: "Hanjaya", day: "Friday")
-            }
+            	script {
+			def name = "jeff"
+
+			if(name=="jeff")
+				println("hi ${name}")
+			else 
+				println("hi human!")
+
+			sleep 2
+			echo "end of script"
+		}
+	    }
         }
         stage ('Testing') {
             steps {

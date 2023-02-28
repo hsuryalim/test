@@ -1,0 +1,29 @@
+pipeline {
+    agent {
+        docker {
+            image 'golang'
+        }
+    }
+
+    stages {
+        stage ('Testing') {
+	    tools {
+	    	maven 'maven 3.6.3'
+	    }
+            steps {
+	    	echo "starting maven testing"
+	    	sh 'mvn --version'
+                echo "Testing the application"
+                sh 'go test ./...'
+            }
+        }
+
+        stage ('Building') {
+            steps {
+                sh 'go build -o app'
+                sh './app'
+            }
+        }
+    }
+
+}

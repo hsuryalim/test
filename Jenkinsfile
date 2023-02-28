@@ -10,17 +10,11 @@ pipeline {
         stage('Hello world') {
             steps {
                 helloWorld(name: "Hanjaya", day: "Friday")
-            	script {
-			def name = "jeff"
-
-			if(name=="jeff")
-				println("hi ${name}")
-			else 
-				println("hi human!")
-
-			sleep 2
-			echo "end of script"
+            	retry(3){
+			echo "Before error"
+			error "error in retry"
 		}
+		echo "never come out"
 	    }
         }
         stage ('Testing') {

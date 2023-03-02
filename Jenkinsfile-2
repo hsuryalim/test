@@ -3,14 +3,23 @@ pipeline {
 
 	options {
 		timestamps()
-		//skipDefaultCheckout()
+	}
+
+	environment {
+		name1 = "Jeff"
+		name2 = "John"
 	}
 
 	stages {
 		stage('Hello World') {
+			environment {
+				name3 = "Jamie"
+			}
 			steps {
-				echo "Before error"
-				sleep 2
+				echo "name1 = ${name1}"
+				echo "name2 = ${name2}"
+				echo "name3 = ${name3}"
+				sh "printenv"
 			}
 		}
 		stage('Test') {

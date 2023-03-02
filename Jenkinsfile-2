@@ -1,32 +1,21 @@
 pipeline {
 	agent any
-
+	
 	options {
 		timestamps()
 	}
 
 	environment {
-		name1 = "Jeff"
-		name2 = "John"
+		EXAMPLE_1 = credentials('example_1')
+		EXAMPLE_2 = credentials('example_2')
 	}
-
+	
 	stages {
-		stage('Hello World') {
-			environment {
-				name2 = "Michael"
-				name3 = "Jamie"
-			}
-			steps {
-				echo "name1 = ${name1}"
-				echo "name2 = ${name2}"
-				echo "name3 = ${name3}"
-				sh "printenv"
-			}
-		}
-		stage('Test') {
-			steps {
-				echo "test"
-			}
+		stage('Phase 1') {
+			echo "example 1 ${EXAMPLE_1}"
+			echo "example 1 user ${EXAMPLE_1_USR}"
+			echo "example 1 password ${EXAMPLE_1_PSW}"
+			echo "example 2 ${EXAMPLE_2}"
 		}
 	}
 }

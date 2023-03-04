@@ -6,13 +6,15 @@ pipeline {
 	}
 
 	environment {
-		some_name="jeff"
+		some_name="jay"
 	}
 
 	stages {
 		stage('Build') {
 			when {
-				equals expected: "jeff", actual: some_name
+				not {
+					equals expected: "jeff", actual: some_name
+				}
 			}
 
 			steps {

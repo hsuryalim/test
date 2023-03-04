@@ -6,19 +6,19 @@ pipeline {
 	}
 
 	environment {
-		some_name="jay"
+		version="1.0.0"
 	}
 
 	stages {
 		stage('Build') {
 			when {
-				not {
-					equals expected: "jeff", actual: some_name
+				expression {
+					version == "1.0.0"
 				}
 			}
 
 			steps {
-				echo "${some_name}"
+				echo "${version}"
 			}
 		}
 	}

@@ -6,14 +6,14 @@ pipeline {
 	}
 
 	environment {
-		version="1.0.0"
+		version="2.0.0"
 		name="test"
 	}
 
 	stages {
 		stage('Build') {
 			when {
-				allOf {
+				anyOf {
 					equals expected: "1.0.0", actual:version
 					environment name:"name", value: "test"
 				}

@@ -12,7 +12,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			when {
-				equals expected: "jeff", actual: some=name
+				equals expected: "jeff", actual: some_name
 			}
 
 			steps {

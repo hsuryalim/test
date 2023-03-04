@@ -7,18 +7,20 @@ pipeline {
 
 	environment {
 		version="2.0.0"
+		name="test"
 	}
 
 	stages {
 		stage('Build') {
 			when {
-				expression {
-					version != "1.0.0"
+				allOf {
+					equals expected: "1.0.0", actual:version
+					environment name:"name", value: "test"
 				}
 			}
 
 			steps {
-				echo "${version}"
+				echo "${name} - ${version}"
 			}
 		}
 	}

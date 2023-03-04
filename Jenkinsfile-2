@@ -11,6 +11,14 @@ pipeline {
 	}
 
 	stages {
+		stage('tags') {
+			when {
+				buildingTag()
+			}
+			steps {
+				echo "building the tag"
+			}
+		}
 		stage('Environment') {
 			when {
 				branch 'main'

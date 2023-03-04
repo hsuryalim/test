@@ -6,18 +6,17 @@ pipeline {
 	}
 
 	environment {
-		EXAMPLE_1 = credentials('example_1')
-		EXAMPLE_2 = credentials('example_2')
+		DEPLOY_TO="production"
 	}
-	
+
 	stages {
-		stage('Phase 1') {
+		stage('Build') {
+			when {
+				environment name: 'DEPLOY_TO', value:'production'
+			}
+
 			steps {
-			
-				echo "example 1 ${EXAMPLE_1}"
-				echo "example 1 user ${EXAMPLE_1_USR}"
-				echo "example 1 password ${EXAMPLE_1_PSW}"
-				echo "example 2 ${EXAMPLE_2}"
+				echo "Deployed"
 			}
 		}
 	}

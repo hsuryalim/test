@@ -11,7 +11,7 @@ pipeline {
 	}
 
 	stages {
-		stage('Environment) {
+		stage('Environment') {
 			when {
 				branch 'main'
 			}

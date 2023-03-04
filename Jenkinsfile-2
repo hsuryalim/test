@@ -16,7 +16,7 @@ pipeline {
 				branch 'main'
 			}
 			steps {
-				echo "building main"
+				echo "building main 2.0"
 			}
 		}
 
@@ -25,7 +25,7 @@ pipeline {
 				branch 'dev'
 			}
 			steps {
-				echo "building dev"
+				echo "building dev 2.0"
 			}
 		}
 		stage('Build') {

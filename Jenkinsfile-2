@@ -6,17 +6,17 @@ pipeline {
 	}
 
 	environment {
-		DEPLOY_TO="beta"
+		some_name="jeff"
 	}
 
 	stages {
 		stage('Build') {
 			when {
-				environment name: 'DEPLOY_TO', value:'production'
+				equals expected: "jeff", actual: some=name
 			}
 
 			steps {
-				echo "Deployed"
+				echo "${some_name}"
 			}
 		}
 	}

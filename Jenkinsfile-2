@@ -11,6 +11,23 @@ pipeline {
 	}
 
 	stages {
+		stage('Environment) {
+			when {
+				branch 'main'
+			}
+			steps {
+				echo "building main"
+			}
+		}
+
+		stage ('Environment 2') {
+			when {
+				branch 'dev'
+			}
+			steps {
+				echo "building dev"
+			}
+		}
 		stage('Build') {
 			when {
 				anyOf {

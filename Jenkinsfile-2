@@ -9,8 +9,17 @@ pipeline {
 		version="3.1.0"
 		name="test"
 	}
-
+	
 	stages {
+
+		stage('Change Log') {
+			when {
+				changelog '*-feature-*'
+			}
+			steps {
+				echo "build from change log"
+			}
+		}
 		stage('tags') {
 			when {
 				tag "2.0"

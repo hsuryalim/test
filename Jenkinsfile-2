@@ -14,10 +14,10 @@ pipeline {
 
 		stage('Change Log') {
 			when {
-				changelog '.*-feature-.*'
+				changeRequest()
 			}
 			steps {
-				echo "build from change log"
+				echo "build from pull request"
 			}
 		}
 		stage('tags') {

@@ -14,7 +14,7 @@ pipeline {
 
 		stage('Change Log') {
 			when {
-				changelog '*-feature-*'
+				changelog '.*-feature-.*'
 			}
 			steps {
 				echo "build from change log"

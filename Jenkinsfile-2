@@ -9,6 +9,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "build step.."
+				error 'error happend'
 			}
 		}
 	}

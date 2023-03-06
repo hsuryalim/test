@@ -1,32 +1,34 @@
 pipeline {
-	agent {
-		docker {
-			image 'golang'
-		}
+	agent any
+
+	options {
+		timestamps()
 	}
 
 	stages {
 		stage('Build') {
-			failFast true
-			parallel{
-				stage('Stage 1'){
-					steps{
-						echo "executing stage 1"
-						error 'error'
-					}
+			input {
+				message "Please specify the environment"
+				ok "OK"
+				submitter "dummyuser, hsuryalim"
+				submitterParameter "whoIsSubmitter"
+				parameters {
+					string(name: 'environment', defaultValue: 'Dev', description: 'Environment to build for (valid values: Dev, Test, Prod)')
+					string(name: 'version', defaultValue: '1.0', description:'Version number to build for')
+					booleanParam(name: 'deploy_to_production', defaultValue: true, description: '')
+					choice(choices: 'US\nJP\nAUS\nID', description: 'AWS Region', name: 'region')
+					text(name: 'myText', defaultValue: 'myPasswordValue', description: 'myDescription')
+					password(name: 'myPassword', defaultValue:'passwordValue', description:'my password')
+					file(name: 'myFile', description:''fileDescription)
+					credentials(name: 'myCredentials', description: 'myCredentialDesc', required: true)
 				}
-				stage('Stage 2') {
-					steps {
-						echo "executing stage 2"
-						sleep 10
-					}
-				}
-				stage('Stage 3') {
-					steps {
-						echo "executing stage 3"
-						sleep 10
-					}
-				}
+			}
+
+			steps {
+				echo "We are building for ${environment} ${version} and we are deploying to production: ${deploy_to_production}"
+				echo "AWS Region is ${region} , myText is ${myText}, myPassword is ${myPassword} and myFile: ${myFile}"
+				echo "submitter is ${whoIsSubmitter}"
+				echo "selected credentials is: ${myCredentials}"
 			}
 		}
 	}

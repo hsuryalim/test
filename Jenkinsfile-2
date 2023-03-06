@@ -9,7 +9,9 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "build step.."
-				error 'error happend'
+				//script {
+				//	currentBuild.result = "UNSTABLE"
+				//}
 			}
 		}
 	}
@@ -23,6 +25,9 @@ pipeline {
 		}
 		always {
 			echo "post->always is called"
+		}
+		changed {
+			echo "post->changed is called"
 		}
 	}
 }

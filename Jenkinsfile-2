@@ -10,7 +10,7 @@ pipeline {
 			steps {
 				echo "build step.."
 				script {
-					currentBuild.result = "UNSTABLE"
+					currentBuild.result = "ABORTED"
 				}
 			}
 		}
@@ -37,6 +37,9 @@ pipeline {
 		}
 		regression {
 			echo "post->regres is called"
+		}
+		aborted {
+			echo "post->aborted is called"
 		}
 	}
 }

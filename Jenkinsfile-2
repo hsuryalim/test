@@ -1,60 +1,26 @@
 pipeline {
-	agent any
-	
-	options {
-		timestamps()
+	agent {
+		docker {
+			image 'golang'
+		}
 	}
 
-	environment {
-		version="3.1.0"
-		name="test"
-	}
-	
 	stages {
-
-		stage('Change Log') {
-			when {
-				changeRequest()
-			}
-			steps {
-				echo "build from pull request"
-			}
-		}
-		stage('tags') {
-			when {
-				tag "2.0"
-			}
-			steps {
-				echo "building the tag"
-			}
-		}
-		stage('Environment') {
-			when {
-				branch 'main'
-			}
-			steps {
-				echo "building main"
-			}
-		}
-
-		stage ('Environment 2') {
-			when {
-				branch 'dev'
-			}
-			steps {
-				echo "building dev"
-			}
-		}
 		stage('Build') {
-			when {
-				anyOf {
-					equals expected: "1.0.0", actual:version
-					environment name:"name", value: "test"
+			failFast true
+			parallel{
+				stage('Stage 1'){
+					echo "executing stage 1"
+					sleep 10
 				}
-			}
-
-			steps {
-				echo "${name} - ${version}"
+				stage('Stage 2') {
+					echo "executing stage 2"
+					sleep 10
+				}
+				stage('Stage 3') {
+					echo "executing stage 3"
+					sleep 10
+				}
 			}
 		}
 	}

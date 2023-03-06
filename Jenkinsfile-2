@@ -9,9 +9,9 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "build step.."
-				script {
-					currentBuild.result = "ABORTED"
-				}
+				//script {
+				//	currentBuild.result = "ABORTED"
+				//}
 			}
 		}
 	}
@@ -40,6 +40,9 @@ pipeline {
 		}
 		aborted {
 			echo "post->aborted is called"
+		}
+		cleanup {
+			echo "post->cleanup is called"
 		}
 	}
 }

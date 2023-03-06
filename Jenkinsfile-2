@@ -9,9 +9,9 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "build step.."
-				//script {
-				//	currentBuild.result = "UNSTABLE"
-				//}
+				script {
+					currentBuild.result = "UNSTABLE"
+				}
 			}
 		}
 	}
@@ -34,6 +34,9 @@ pipeline {
 		}
 		fixed {
 			echo "post->fixed is called"
+		}
+		regression {
+			echo "post->regres is called"
 		}
 	}
 }

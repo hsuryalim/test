@@ -19,7 +19,7 @@ pipeline {
 					choice(choices: 'US\nJP\nAUS\nID', description: 'AWS Region', name: 'region')
 					text(name: 'myText', defaultValue: 'myPasswordValue', description: 'myDescription')
 					password(name: 'myPassword', defaultValue:'passwordValue', description:'my password')
-					file(name: 'myFile', description:''fileDescription)
+					file(name: 'myFile', description:'fileDescription')
 					credentials(name: 'myCredentials', description: 'myCredentialDesc', required: true)
 				}
 			}

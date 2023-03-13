@@ -7,13 +7,21 @@ pipeline {
 
 	options {
 		timestamps()
-		overrideIndexTriggers(true)
 	}
 
 	stages {
 		stage('Build') {
 			steps {
 				echo "Hello World 3"
+				script {
+					currentBuild.result = 'UNSTABLE'
+				}
+			}
+		}
+
+		stage('Deploy') {
+			steps  {
+				echo "deploy running..."
 			}
 		}
 	}

@@ -1,25 +1,25 @@
 pipeline {
 	agent {
 		docker {
-			image 'golang:alpine'
+			image 'ubuntu:latest'
 		}
 	}
 
 	options {
 		timestamps()
-		checkoutToSubdirectory('working-drectory')
+		newContainerPerStage()
 	}
 
 	stages {
 		stage('Build') {
 			steps {
-				echo "Hello World 3"
+				sh "cat /etc/lsb-release"
 			}
 		}
 
 		stage('Deploy') {
 			steps  {
-				echo "deploy running..."
+				sh "cat /etc/lsb-release"
 			}
 		}
 	}

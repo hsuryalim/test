@@ -9,7 +9,6 @@ pipeline {
 		stage('Build') {
 			steps {
 				echo "build step.."
-				echo "build step 2"
 				//script {
 				//	currentBuild.result = "ABORTED"
 				//}

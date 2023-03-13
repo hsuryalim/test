@@ -7,19 +7,16 @@ pipeline {
 
 	options {
 		timestamps()
-		newContainerPerStage()
+	}
+
+	parameters {
+		choice(choices:['qa','dev'], description: 'Please choose environment', name: 'ENV')
 	}
 
 	stages {
 		stage('Build') {
 			steps {
-				sh "cat /etc/lsb-release"
-			}
-		}
-
-		stage('Deploy') {
-			steps  {
-				sh "cat /etc/lsb-release"
+				echo "${ENV}"
 			}
 		}
 	}

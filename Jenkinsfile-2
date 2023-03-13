@@ -13,41 +13,9 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo "build step.."
-				//script {
-				//	currentBuild.result = "ABORTED"
-				//}
+				sleep(time: 10, unit: 'SECONDS')
+				echo "building..."
 			}
-		}
-	}
-
-	post {
-		success {
-			echo "post->success is called"
-		}
-		failure {
-			echo "post->failure is called"
-		}
-		always {
-			echo "post->always is called"
-		}
-		changed {
-			echo "post->changed is called"
-		}
-		unstable {
-			echo "post->unstable is called"
-		}
-		fixed {
-			echo "post->fixed is called"
-		}
-		regression {
-			echo "post->regres is called"
-		}
-		aborted {
-			echo "post->aborted is called"
-		}
-		cleanup {
-			echo "post->cleanup is called"
 		}
 	}
 }

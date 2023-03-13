@@ -7,14 +7,13 @@ pipeline {
 
 	options {
 		timestamps()
-		disableConcurrentBuilds()
+		overrideIndexTriggers(false)
 	}
 
 	stages {
 		stage('Build') {
 			steps {
-				sleep(time: 10, unit: 'SECONDS')
-				echo "building..."
+				echo "Hello World 1"
 			}
 		}
 	}

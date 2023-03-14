@@ -13,12 +13,6 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				checkout([$class: 'GitSCM',
-					branches: [[name: "origin/dev"]],
-					userRemoteConfigs: [[
-						url: 'https://github.com/hsuryalim/test.git'
-					]]
-				])
 
 				sh "echo $someEnv"
 			}

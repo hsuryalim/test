@@ -6,7 +6,7 @@ pipeline {
 	}
 
 	triggers {
-		upstream(upstreamProjects: 'job-1','job-2', 
+		upstream(upstreamProjects: 'job-1,job-2', 
 		threshold: hudson.model.Result.SUCCESS)
 	}
 

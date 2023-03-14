@@ -2,12 +2,8 @@ pipeline {
 	agent {
 		docker {
 			image 'ubuntu:latest'
+			args '-e someEnv=dev'
 		}
-	}
-
-	triggers {
-		upstream(upstreamProjects: 'job-1,job-2', 
-		threshold: hudson.model.Result.SUCCESS)
 	}
 
 	options {
@@ -23,6 +19,8 @@ pipeline {
 						url: 'https://github.com/hsuryalim/test.git'
 					]]
 				])
+
+				sh -c "echo ${someEnv}"
 			}
 		}
 	}

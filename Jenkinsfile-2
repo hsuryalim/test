@@ -4,6 +4,7 @@ pipeline {
 			image 'ubuntu:latest'
 			args '-e someEnv=dev'
 			alwaysPull true
+			customWorkspace '/var/lib/jenkins/workspace/customWorkspace'
 		}
 	}
 

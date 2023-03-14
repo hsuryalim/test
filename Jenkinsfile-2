@@ -20,7 +20,7 @@ pipeline {
 					]]
 				])
 
-				sh -c "echo ${someEnv}"
+				echo "${someEnv}"
 			}
 		}
 	}

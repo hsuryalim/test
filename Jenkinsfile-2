@@ -2,7 +2,7 @@ pipeline {
 	agent {
 		docker {
 			image 'ubuntu:latest'
-			args '-e someEnv=dev'
+			args 'ENV someEnv=dev'
 		}
 	}
 

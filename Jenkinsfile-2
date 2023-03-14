@@ -1,12 +1,9 @@
 pipeline {
 	agent {
 		docker {
-			image 'maven:3.5.3-jdk-10-slim'
+			image 'ubuntu:latest'
+			args '-e someEnv=dev'
 		}
-	}
-
-	environment {
-		someEnv='dev'
 	}
 
 	options {
@@ -17,7 +14,7 @@ pipeline {
 		stage('Build') {
 			steps {
 
-				sh "echo $someEnv"
+				sh "printenv"
 			}
 		}
 	}
